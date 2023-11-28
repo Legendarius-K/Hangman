@@ -34,12 +34,8 @@ while (lives > 0) {
     let correct = false;
   
     
-        let userLetter = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`).toLowerCase(); 
-    // if (!inputValidation(userLetter)) {
-    //     continue;
-    // } 
+    let userLetter = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`); 
     
-
     if (userLetter === null) {
         let cancelButton = prompt(`Do you really want to abandon the Spaceman?\n"OK" or "Cancel"?`)
         if (cancelButton === null) {
@@ -53,15 +49,15 @@ while (lives > 0) {
 
     for (i = 0; i <= randomWord.length; i++) {
         
-        if (userLetter === randomWord[i]) {
-            wordUnderscore[i] = userLetter;
+        if (userLetter.toLowerCase() === randomWord[i]) {
+            wordUnderscore[i] = userLetter.toUpperCase();
             letterCounter++;
             correct = true;
         }    
     }
 
     if (correct) {
-        alert(`CONGRATULATIONS! You guessed correctly! \n ${wordUnderscore.join("  ")}`);   
+        alert(`CONGRATULATIONS! You guessed correctly! \n\n ${wordUnderscore.join("  ")}`);   
     } else {
         alert(`That was WRONG! You lose 1 life`);
         lives -= 1;
