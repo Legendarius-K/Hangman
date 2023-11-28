@@ -7,10 +7,6 @@ const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
 let userLetter;
 
-const userGuess = () => {
-    let userLetter = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`)
-}
-
 letterArray = randomWord.split("");
 
 let wordUnderscore = Array(randomWord.length).fill("_");
@@ -24,6 +20,9 @@ randomWord.length < 5 ? lives = 13
     : lives = 17;
 
 
+const inputValidation = () => {return /^[a-z]$/i.test()};
+const reloadPage = () => location.reload();
+
 
 alert(`Welcome to SPACEMAN! \n \nThe spaceman is lost in outer space. Help him plot his course back to his solar system by finding a landmark to follow.`)
 alert(`The word you are looking for is ${randomWord.length} letters long. \n ${wordUnderscore.join("  ")}`);
@@ -33,14 +32,22 @@ alert(`The word you are looking for is ${randomWord.length} letters long. \n ${w
 while (lives > 0) {
 
     let correct = false;
-    userGuess()
+  
+    
+        let userLetter = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`).toLowerCase(); 
+    // if (!inputValidation(userLetter)) {
+    //     continue;
+    // } 
+    
 
     if (userLetter === null) {
-        prompt(`Do you really want to abandon the Spaceman?`)
-        if (userLetter === null) {
-            userGuess()
+        let cancelButton = prompt(`Do you really want to abandon the Spaceman?\n"OK" or "Cancel"?`)
+        if (cancelButton === null) {
+            continue;
         } else {
-            prompt(`Okay then, you'll have to live with that, you monster.`)
+            alert(`Okay then, but you'll have to live with that, you monster.`)
+            break;
+            lives = 0;
         }
     }
 
@@ -61,23 +68,30 @@ while (lives > 0) {
     }
 
     if (letterCounter === randomWord.length) {
-        alert(`GOOD JOOB! The spaceman found earth!`);
-        break;
+        let goAgain = prompt(`GOOD JOOB! The spaceman found earth!\n\nDo you want to play again?\n"OK" or "Cancel"?`);
+        
+        if (goAgain === null) {
+            alert(`Okay! Thanks for playing!`);
+            break;
+        } else {
+            break;
+        }
+        
     } 
 
-}
+    if (lives === 0) {
+        let tryAgain = prompt(`GAME OVER!\n\nDo you want to try again?\n"OK" or "Cancel"?`);
 
-
-
-if (lives === 0) {
-    let tryAgain = prompt(`GAME OVER!\n\nDo you want to try again?\n\nType "yes" or "no"`).toLowerCase();
-
-    if (tryAgain === "yes") {
-        location.reload();
-    } else {
-        alert(`Too bad! The spaceman will float around in the infinite void for eternity...`)
+        if (tryAgain === null) {
+            alert(`Too bad! The spaceman will float around in the infinite void for eternity...`);
+        } else {
+            break;
+        }
     }
 }
+
+reloadPage()
+
 
 
 
