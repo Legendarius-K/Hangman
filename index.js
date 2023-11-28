@@ -4,19 +4,19 @@ window.addEventListener("load", function () { //I still don't know what this doe
 let wordBank = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto", "comet", "moon", "eclipse", "supernova", "star", "sun",];
 
 const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-console.log('randomWord: ', randomWord);
 
-// const userGuess = () => {
-//     let userGuess = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`)
-// }
+let userLetter;
+
+const userGuess = () => {
+    let userLetter = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`)
+}
 
 letterArray = randomWord.split("");
-console.log('randomWordArray: ', letterArray);
 
 let wordUnderscore = Array(randomWord.length).fill("_");
-console.log('wordUnderscore: ', wordUnderscore);
 
 let lives;
+
 let letterCounter = 0;
 
 randomWord.length < 5 ? lives = 13 
@@ -33,19 +33,21 @@ alert(`The word you are looking for is ${randomWord.length} letters long. \n ${w
 while (lives > 0) {
 
     let correct = false;
-    let userGuess = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`)
+    userGuess()
 
-    if (userGuess === null) {
+    if (userLetter === null) {
         prompt(`Do you really want to abandon the Spaceman?`)
-        if (userGuess === null) {
-            
+        if (userLetter === null) {
+            userGuess()
+        } else {
+            prompt(`Okay then, you'll have to live with that, you monster.`)
         }
     }
 
     for (i = 0; i <= randomWord.length; i++) {
         
-        if (userGuess === randomWord[i]) {
-            wordUnderscore[i] = userGuess;
+        if (userLetter === randomWord[i]) {
+            wordUnderscore[i] = userLetter;
             letterCounter++;
             correct = true;
         }    
