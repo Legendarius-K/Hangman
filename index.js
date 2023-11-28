@@ -6,6 +6,10 @@ let wordBank = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranu
 const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 console.log('randomWord: ', randomWord);
 
+// const userGuess = () => {
+//     let userGuess = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`)
+// }
+
 letterArray = randomWord.split("");
 console.log('randomWordArray: ', letterArray);
 
@@ -24,10 +28,19 @@ randomWord.length < 5 ? lives = 13
 alert(`Welcome to SPACEMAN! \n \nThe spaceman is lost in outer space. Help him plot his course back to his solar system by finding a landmark to follow.`)
 alert(`The word you are looking for is ${randomWord.length} letters long. \n ${wordUnderscore.join("  ")}`);
 
+
+
 while (lives > 0) {
 
     let correct = false;
     let userGuess = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`)
+
+    if (userGuess === null) {
+        prompt(`Do you really want to abandon the Spaceman?`)
+        if (userGuess === null) {
+            
+        }
+    }
 
     for (i = 0; i <= randomWord.length; i++) {
         
