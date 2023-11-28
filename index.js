@@ -5,29 +5,32 @@ let wordBank = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranu
 
 const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
-let userLetter;
-
 letterArray = randomWord.split("");
 
 let wordUnderscore = Array(randomWord.length).fill("_");
+
+let userLetter;
 
 let lives;
 
 let letterCounter = 0;
 
+let reload = false;
+
 randomWord.length < 5 ? lives = 13 
     : randomWord.length < 7 ? lives = 15
     : lives = 17;
-
 
 const inputValidation = () => {return /^[a-z]$/i.test()};
 const reloadPage = () => location.reload();
 
 
+
+
+
+
 alert(`Welcome to SPACEMAN! \n \nThe spaceman is lost in outer space. Help him plot his course back to his solar system by finding a landmark to follow.`)
 alert(`The word you are looking for is ${randomWord.length} letters long. \n ${wordUnderscore.join("  ")}`);
-
-
 
 while (lives > 0) {
 
@@ -70,9 +73,9 @@ while (lives > 0) {
             alert(`Okay! Thanks for playing!`);
             break;
         } else {
+            reload = true;
             break;
-        }
-        
+        } 
     } 
 
     if (lives === 0) {
@@ -81,12 +84,14 @@ while (lives > 0) {
         if (tryAgain === null) {
             alert(`Too bad! The spaceman will float around in the infinite void for eternity...`);
         } else {
+            reload = true;
             break;
         }
     }
 }
 
-reloadPage()
+reload === false || reloadPage()
+
 
 
 
