@@ -1,52 +1,41 @@
 
 window.addEventListener("load", function () { //I still don't know what this does, but it made the page load properly, so it stays =D
 
-let wordBank = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto", "comet", "moon", "eclipse", "supernova", "star", "sun",];
-
+const wordBank = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto", "comet", "moon", "eclipse", "supernova", "star", "sun",];
 const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-
-letterArray = randomWord.split("");
-
+const letterArray = randomWord.split("");
 let wordUnderscore = Array(randomWord.length).fill("_");
-
 let userLetter;
-
 let lives;
-
 let letterCounter = 0;
-
 let reload = false;
+
+const reloadPage = () => location.reload();
 
 randomWord.length < 5 ? lives = 13 
     : randomWord.length < 7 ? lives = 15
     : lives = 17;
 
-const inputValidation = () => {return /^[a-z]$/i.test()};
-const reloadPage = () => location.reload();
-
-
-
-
-
-
+    
 alert(`Welcome to SPACEMAN! \n \nThe spaceman is lost in outer space. Help him plot his course back to his solar system by finding a landmark to follow.`)
 alert(`The word you are looking for is ${randomWord.length} letters long. \n ${wordUnderscore.join("  ")}`);
 
 while (lives > 0) {
 
     let correct = false;
-  
     
-    let userLetter = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`); 
-    
+    do {
+        userLetter = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`); 
+    } while (!/^[a-zA-Z]$/.test(userLetter)); 
+
     if (userLetter === null) {
         let cancelButton = prompt(`Do you really want to abandon the Spaceman?\n"OK" or "Cancel"?`)
         if (cancelButton === null) {
             continue;
         } else {
             alert(`Okay then, but you'll have to live with that, you monster.`)
-            break;
             lives = 0;
+            break;            
         }
     }
 
@@ -91,20 +80,5 @@ while (lives > 0) {
 }
 
 reload === false || reloadPage()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
