@@ -25,19 +25,22 @@ while (lives > 0) {
     let correct = false;
     
     do {
-        userLetter = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`); 
+        userLetter = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`);
+        
+        if (userLetter === null) {
+            let cancelButton = prompt(`Do you really want to abandon the Spaceman?\n"OK" or "Cancel"?`)
+            
+            if (cancelButton === null) {
+                continue;
+            } else {
+                alert(`Okay then, but you'll have to live with that, you monster.`)
+                lives = 0;
+                break;            
+            }
+        }
     } while (!/^[a-zA-Z]$/.test(userLetter)); 
 
-    if (userLetter === null) {
-        let cancelButton = prompt(`Do you really want to abandon the Spaceman?\n"OK" or "Cancel"?`)
-        if (cancelButton === null) {
-            continue;
-        } else {
-            alert(`Okay then, but you'll have to live with that, you monster.`)
-            lives = 0;
-            break;            
-        }
-    }
+    
 
     for (i = 0; i <= randomWord.length; i++) {
         
