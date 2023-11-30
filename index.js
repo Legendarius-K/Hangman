@@ -52,6 +52,7 @@ while (lives > 0) {
                 correct = true;
             }    
         }
+    // }
 
         if (correct) {
             alert(`CONGRATULATIONS! You guessed correctly! \n\n ${wordUnderscore.join("  ")}`);   
@@ -59,7 +60,7 @@ while (lives > 0) {
             alert(`That was WRONG! You lose 1 life`);
             lives -= 1;
         }
-
+    
         if (letterCounter === randomWord.length) {
             let goAgain = prompt(`GOOD JOOB! The spaceman found earth!\n\nDo you want to play again?\nClick "OK" or "Cancel"?`);
         
@@ -82,7 +83,7 @@ while (lives > 0) {
                 break;
             }
         }
-    // }
+    
 }
 
 reload === false || reloadPage()
