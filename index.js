@@ -41,43 +41,44 @@ while (lives > 0) {
     } while (!/^[a-zA-Z]$/.test(userLetter)); 
 
     
-
-    for (i = 0; i <= randomWord.length; i++) {
+    if (!userLetter === null) {
+        for (i = 0; i <= randomWord.length; i++) {
         
-        if (userLetter.toLowerCase() === randomWord[i]) {
-            wordUnderscore[i] = userLetter.toUpperCase();
-            letterCounter++;
-            correct = true;
-        }    
-    }
+            if (userLetter.toLowerCase() === randomWord[i]) {
+                wordUnderscore[i] = userLetter.toUpperCase();
+                letterCounter++;
+                correct = true;
+            }    
+        }
 
-    if (correct) {
-        alert(`CONGRATULATIONS! You guessed correctly! \n\n ${wordUnderscore.join("  ")}`);   
-    } else {
-        alert(`That was WRONG! You lose 1 life`);
-        lives -= 1;
-    }
-
-    if (letterCounter === randomWord.length) {
-        let goAgain = prompt(`GOOD JOOB! The spaceman found earth!\n\nDo you want to play again?\nClick "OK" or "Cancel"?`);
-        
-        if (goAgain === null) {
-            alert(`Okay! Thanks for playing!`);
-            break;
+        if (correct) {
+            alert(`CONGRATULATIONS! You guessed correctly! \n\n ${wordUnderscore.join("  ")}`);   
         } else {
-            reload = true;
-            break;
+            alert(`That was WRONG! You lose 1 life`);
+            lives -= 1;
+        }
+
+        if (letterCounter === randomWord.length) {
+            let goAgain = prompt(`GOOD JOOB! The spaceman found earth!\n\nDo you want to play again?\nClick "OK" or "Cancel"?`);
+        
+            if (goAgain === null) {
+                alert(`Okay! Thanks for playing!`);
+                break;
+            } else {
+                reload = true;
+                break;
+            } 
         } 
-    } 
 
-    if (lives === 0) {
-        let tryAgain = prompt(`GAME OVER!\n\nDo you want to try again?\nClick "OK" or "Cancel"?`);
+        if (lives === 0) {
+            let tryAgain = prompt(`GAME OVER!\n\nDo you want to try again?\nClick "OK" or "Cancel"?`);
 
-        if (tryAgain === null) {
-            alert(`Too bad! The spaceman will float around in the infinite void for eternity...`);
-        } else {
-            reload = true;
-            break;
+            if (tryAgain === null) {
+                alert(`Too bad! The spaceman will float around in the infinite void for eternity...`);
+            } else {
+                reload = true;
+                break;
+            }
         }
     }
 }
