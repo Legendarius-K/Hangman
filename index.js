@@ -9,6 +9,7 @@ let userLetter;
 let lives;
 let letterCounter = 0;
 let reload = false;
+const guessedLetters = new Set();
 
 const reloadPage = () => location.reload();
 
@@ -38,8 +39,10 @@ while (lives > 0) {
                 break;            
             }
         }
-    } while (!/^[a-zA-Z]$/.test(userLetter)); 
+    } while (!/^[a-zA-Z]$/.test(userLetter) || guessedLetters.has(userLetter.toLowerCase()));
 
+    guessedLetters.add(userLetter.toLowerCase());;
+    
     
     // if (!userLetter === null) {
         for (i = 0; i <= randomWord.length; i++) {
