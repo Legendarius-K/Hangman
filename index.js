@@ -28,7 +28,7 @@ while (lives > 0) {
         userLetter = prompt(`Guess a letter! \n\n ${wordUnderscore.join("  ")} \n\n You have ${lives} lives left`);
         
         if (userLetter === null) {
-            let cancelButton = prompt(`Do you really want to abandon the Spaceman?\n"OK" or "Cancel"?`)
+            let cancelButton = prompt(`Do you really want to abandon the Spaceman?\nClick "OK" or "Cancel"?`)
             
             if (cancelButton === null) {
                 continue;
@@ -59,7 +59,7 @@ while (lives > 0) {
     }
 
     if (letterCounter === randomWord.length) {
-        let goAgain = prompt(`GOOD JOOB! The spaceman found earth!\n\nDo you want to play again?\n"OK" or "Cancel"?`);
+        let goAgain = prompt(`GOOD JOOB! The spaceman found earth!\n\nDo you want to play again?\nClick "OK" or "Cancel"?`);
         
         if (goAgain === null) {
             alert(`Okay! Thanks for playing!`);
@@ -71,7 +71,7 @@ while (lives > 0) {
     } 
 
     if (lives === 0) {
-        let tryAgain = prompt(`GAME OVER!\n\nDo you want to try again?\n"OK" or "Cancel"?`);
+        let tryAgain = prompt(`GAME OVER!\n\nDo you want to try again?\nClick "OK" or "Cancel"?`);
 
         if (tryAgain === null) {
             alert(`Too bad! The spaceman will float around in the infinite void for eternity...`);
