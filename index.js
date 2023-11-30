@@ -41,7 +41,7 @@ while (lives > 0) {
     } while (!/^[a-zA-Z]$/.test(userLetter)); 
 
     
-    if (!userLetter === null) {
+    // if (!userLetter === null) {
         for (i = 0; i <= randomWord.length; i++) {
         
             if (userLetter.toLowerCase() === randomWord[i]) {
@@ -80,7 +80,7 @@ while (lives > 0) {
                 break;
             }
         }
-    }
+    // }
 }
 
 reload === false || reloadPage()
