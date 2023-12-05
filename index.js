@@ -1,6 +1,4 @@
 
-window.addEventListener("load", function () { //I still don't know what this does, but it made the page load properly, so it stays =D
-
 const wordBank = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto", "comet", "moon", "eclipse", "supernova", "star", "sun",];
 const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 const letterArray = randomWord.split("");
@@ -18,8 +16,8 @@ randomWord.length < 5 ? lives = 13
     : lives = 17;
 
     
-alert(`Welcome to SPACEMAN! \n \nThe spaceman is lost in outer space. Help him plot his course back to his solar system by finding a landmark to follow.`)
-alert(`The word you are looking for is ${randomWord.length} letters long. \n ${wordUnderscore.join("  ")}`);
+alert(`Welcome to SPACEMAN! \n\nThe spaceman is lost in outer space. Help him plot his course back to his solar system by finding a waymark mark to follow.`)
+alert(`The waymark you should follow is ${randomWord.length} letters long. \n ${wordUnderscore.join("  ")}`);
 
 while (lives > 0) {
 
@@ -39,20 +37,21 @@ while (lives > 0) {
                 break;            
             }
         }
-    } while (!/^[a-zA-Z]$/.test(userLetter) || guessedLetters.includes(userLetter.toLowerCase()));
+    } while (!/^[a-z]$/i.test(userLetter) || guessedLetters.includes(userLetter.toLowerCase()));
 
+    if (userLetter === null) break;
     guessedLetters.push(userLetter.toLowerCase());;    
     
-    // if (!userLetter === null) {
-        for (i = 0; i <= randomWord.length; i++) {
+    
+    for (i = 0; i <= randomWord.length; i++) {
         
-            if (userLetter.toLowerCase() === randomWord[i]) {
-                wordUnderscore[i] = userLetter.toUpperCase();
-                letterCounter++;
-                correct = true;
-            }    
-        }
-    // }
+        if (userLetter.toLowerCase() === randomWord[i]) {
+            wordUnderscore[i] = userLetter.toUpperCase();
+            letterCounter++;
+            correct = true;
+        }    
+    }
+   
 
         if (correct) {
             alert(`CONGRATULATIONS! You guessed correctly! \n\n ${wordUnderscore.join("  ")}`);   
@@ -88,4 +87,3 @@ while (lives > 0) {
 
 reload === false || reloadPage()
 
-});
